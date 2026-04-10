@@ -1,0 +1,203 @@
+/* === 1. RESET & BOX-SIZING === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === 2. KAWAII CUSTOM PROPERTIES === */
+:root {
+  --clr-primary:  #ff85a2;  /* Soft Pink */
+  --clr-accent:   #ffc2d1;  /* Lighter Pink */
+  --clr-text:      #5d4037;  /* Soft Brown for readability */
+  --clr-muted:     #9b6b6b;
+  --clr-bg:        #fff5f7;  /* Very Pale Pink Background */
+  --clr-white:     #FFFFFF;
+  --clr-border:    #ffdae3;
+  --radius:        25px;     /* Extra rounded for Bubbliness */
+  --shadow:        0 5px 15px rgba(255, 133, 162, 0.15);
+  --max-width:     1100px;
+}
+
+/* === 3. BASE TYPOGRAPHY === */
+body {
+  font-family: 'Quicksand', 'Segoe UI', system-ui, sans-serif; /* Quicksand is great for Kawaii themes */
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+}
+h1, h2, h3 { 
+    color: var(--clr-primary); 
+    font-weight: 700;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; position: relative; display: inline-block; }
+/* Adding a cute underline effect to h2 */
+h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 6px;
+    background: var(--clr-accent);
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 10px;
+}
+a  { color: var(--clr-primary); transition: 0.3s; }
+a:hover { color: #ff477e; }
+img{ max-width: 100%; height: auto; display: block; border-radius: var(--radius); }
+
+/* === 4. LAYOUT CONTAINER === */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* === 5. SKIP LINK === */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--clr-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  text-decoration: none;
+}
+.skip-link:focus { top: 0; }
+
+/* === 6. HEADER + NAVIGATION === */
+header {
+  background: var(--clr-white); /* White header for a clean look */
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(255, 133, 162, 0.1);
+  border-bottom: 3px solid var(--clr-border);
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--clr-primary);
+  text-decoration: none;
+}
+nav ul  { list-style: none; display: flex; gap: 1.5rem; }
+nav a   {
+  color: var(--clr-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+nav a:hover, nav a.active {
+  background: var(--clr-accent);
+  color: var(--clr-primary);
+}
+
+/* === 7. HERO SECTION === */
+.hero {
+  background: var(--clr-white);
+  color: var(--clr-text);
+  padding: 6rem 1.5rem;
+  text-align: center;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  box-shadow: var(--shadow);
+}
+.hero .accent { color: var(--clr-primary); text-shadow: 1px 1px 0px white; }
+.hero .tagline {
+  font-size: 1.15rem;
+  color: var(--clr-muted);
+  margin: 0.75rem 0 0.5rem;
+}
+.hero p {
+  max-width: 580px;
+  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+}
+
+/* === 8. BUTTONS === */
+.btn {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  background: var(--clr-primary);
+  color: white;
+  border-radius: 50px; /* Capsule shape */
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 4px 0px #e66a8a; /* 3D effect */
+  transition: all 0.2s;
+}
+.btn:hover { 
+    transform: scale(1.05);
+    background: #ff477e;
+}
+.btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0px #e66a8a;
+}
+.btn-outline {
+  background: white;
+  border: 2px solid var(--clr-primary);
+  color: var(--clr-primary);
+  box-shadow: none;
+}
+
+/* === 9. PROJECT CARDS === */
+.card {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  border: 2px solid var(--clr-border);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.card:hover { transform: translateY(-10px) rotate(1deg); }
+.card-tag {
+  background: #fdf2f5;
+  color: var(--clr-primary);
+  border: 1px solid var(--clr-border);
+}
+
+/* === 10. ABOUT PAGE === */
+.profile-img { 
+    border: 5px solid var(--clr-accent);
+    padding: 5px;
+    background: white;
+}
+.skills-list li::before { content: "✨ "; }
+
+table { border-radius: 15px; overflow: hidden; border: 2px solid var(--clr-border); }
+table th { background: var(--clr-accent); color: var(--clr-primary); }
+
+/* === 11. CONTACT FORM === */
+.contact-form {
+    border: 3px dashed var(--clr-accent); /* Cute dashed border */
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 4px rgba(255, 133, 162, 0.2);
+}
+
+/* === 12. FOOTER === */
+footer {
+  background: var(--clr-white);
+  color: var(--clr-primary);
+  border-top: 3px solid var(--clr-border);
+  font-weight: 600;
+}
+
+/* === 13. RESPONSIVE === */
+@media (min-width: 768px) {
+  .about-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+  }
+}
